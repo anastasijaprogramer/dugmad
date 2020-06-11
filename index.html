@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cas 21</title>
+<style>
+.obojiTekst{
+	color: blue;
+}
+
+.obojiPozadinu{
+	background-color: yellow;
+}
+
+.ugasen{
+	color: black;
+	background-color: white;
+}
+
+.upaljen{
+	color: blue;
+	background-color: silver;
+}
+</style>
+</head>
+<br>
+<body>
+	<div>Ja sam div 1</div>
+	<button class='ugasen'>Ugaseno</button>
+	<hr>
+	<button>Otvori novi prozor</button>
+	<button>Zatvori prozor</button>
+	<button>Stampaj</button>
+	
+	<script>
+		var div = document.getElementsByTagName('div')[0];
+		//div.setAttribute('class', 'obojiTekst');
+		//div.setAttribute('class', 'obojiPozadinu');
+		
+		div.classList.add('obojiTekst'); 
+		div.classList.add('obojiPozadinu'); 
+		div.classList.remove('obojiPozadinu'); 
+		
+		// zadatak 1
+		// napisati js kod kojim kad se pritisne na dugme ono postaje:
+		// upaljenmo ako je vec ugaseno
+		// ugaseno ako je vec upaljeno
+		
+		var dugme = document.getElementsByTagName('button')[0];
+		dugme.addEventListener('click', function(){
+			if(dugme.classList.contains('ugasen')){
+				dugme.classList.add('upaljen');
+				dugme.classList.remove('ugasen'); 
+				dugme.innerHTML = 'Upaljeno';			
+			}
+			else{
+				dugme.classList.add('ugasen'); 
+				dugme.classList.remove('upaljen'); 
+				dugme.innerHTML = 'Ugaseno';
+			}
+		});
+		
+		//2.
+   		// napraviti fje da se na dugme napravi
+		// novi prozor
+		// zatvori prozor
+		// stampaj prozor
+
+
+		var dugmeNovi = document.getElementsByTagName('button')[1];
+		var dugmeZatvori = document.getElementsByTagName('button')[2];
+		var dugmeStampaj = document.getElementsByTagName('button')[3];
+		var noviProzor = null; //1 2 3
+		
+		dugmeNovi.addEventListener('click', otvoriNovi);
+		dugmeZatvori.addEventListener('click', zatvori);
+		dugmeStampaj.addEventListener('click', stampaj);
+		
+		function otvoriNovi(){
+			noviProzor = window.open('prozor.html', "", "width=400,height=200,top=100,left=200");
+		}
+		
+		function zatvori(){
+			// window.close();  nece ga zatvoriti ako ima vise od jednog otvorenog taba
+			noviProzor.close();
+		}
+		
+		function stampaj(){
+			// noviProzor.print();  moze u Microsoft-u :)
+			window.print();
+		}
+	</script>
+</body>
+</html>
